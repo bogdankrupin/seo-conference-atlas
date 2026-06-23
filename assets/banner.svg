@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 420" width="1280" height="420" role="img" aria-label="Conference Atlas — SEO, Marketing and AI-Search conferences on a 3D globe">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#070b14"/>
+      <stop offset="0.55" stop-color="#0a0f1c"/>
+      <stop offset="1" stop-color="#0f0a1c"/>
+    </linearGradient>
+    <radialGradient id="glowL" cx="20%" cy="0%" r="70%">
+      <stop offset="0" stop-color="#13203f" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#13203f" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowR" cx="105%" cy="115%" r="60%">
+      <stop offset="0" stop-color="#1d1030" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#1d1030" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="globe" cx="38%" cy="32%" r="75%">
+      <stop offset="0" stop-color="#2a4f86"/>
+      <stop offset="0.55" stop-color="#15315c"/>
+      <stop offset="1" stop-color="#0a1a33"/>
+    </radialGradient>
+    <radialGradient id="atmo" cx="50%" cy="50%" r="50%">
+      <stop offset="0.74" stop-color="#4a86d6" stop-opacity="0"/>
+      <stop offset="0.9" stop-color="#4a86d6" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#4a86d6" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="heat" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#1fd1c8"/>
+      <stop offset="0.5" stop-color="#ffb454"/>
+      <stop offset="1" stop-color="#ff3b6b"/>
+    </linearGradient>
+    <filter id="soft" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="5"/>
+    </filter>
+  </defs>
+
+  <rect width="1280" height="420" fill="url(#bg)"/>
+  <rect width="1280" height="420" fill="url(#glowL)"/>
+  <rect width="1280" height="420" fill="url(#glowR)"/>
+
+  <!-- starfield -->
+  <g fill="#ffffff" opacity="0.5">
+    <circle cx="640" cy="60" r="1.1"/><circle cx="720" cy="120" r="0.9"/>
+    <circle cx="900" cy="48" r="1.3"/><circle cx="1040" cy="100" r="0.9"/>
+    <circle cx="1150" cy="60" r="1.1"/><circle cx="1190" cy="150" r="0.8"/>
+    <circle cx="560" cy="360" r="0.9"/><circle cx="980" cy="370" r="1.1"/>
+    <circle cx="1210" cy="320" r="0.9"/><circle cx="860" cy="330" r="0.8"/>
+  </g>
+
+  <!-- GLOBE -->
+  <g transform="translate(255,212)">
+    <circle r="172" fill="url(#atmo)"/>
+    <circle r="150" fill="url(#globe)" stroke="#3a6bb0" stroke-opacity="0.35" stroke-width="1"/>
+    <!-- parallels -->
+    <g fill="none" stroke="#5b8fd6" stroke-opacity="0.22" stroke-width="1">
+      <ellipse rx="150" ry="40"/><ellipse rx="138" ry="86"/>
+      <ellipse rx="150" ry="125"/>
+      <ellipse cx="0" cy="-72" rx="106" ry="22"/>
+      <ellipse cx="0" cy="72" rx="106" ry="22"/>
+    </g>
+    <!-- meridians -->
+    <g fill="none" stroke="#5b8fd6" stroke-opacity="0.20" stroke-width="1">
+      <ellipse rx="40" ry="150"/><ellipse rx="86" ry="150"/>
+      <ellipse rx="122" ry="150"/><line x1="0" y1="-150" x2="0" y2="150"/>
+    </g>
+    <circle r="150" fill="none" stroke="#0a1a33" stroke-width="2"/>
+
+    <!-- heat nodes (conference hubs) -->
+    <g>
+      <!-- North America hub -->
+      <circle cx="-58" cy="-30" r="26" fill="#ff3b6b" opacity="0.16" filter="url(#soft)"/>
+      <circle cx="-58" cy="-30" r="5.5" fill="#ff5c7e"/>
+      <circle cx="-58" cy="-30" r="14" fill="none" stroke="#ff8c42" stroke-opacity="0.55" stroke-width="1.4"/>
+      <circle cx="-58" cy="-30" r="22" fill="none" stroke="#ff8c42" stroke-opacity="0.22" stroke-width="1.2"/>
+      <!-- Europe hub -->
+      <circle cx="34" cy="-44" r="20" fill="#ffb454" opacity="0.18" filter="url(#soft)"/>
+      <circle cx="34" cy="-44" r="4.5" fill="#ffb454"/>
+      <circle cx="34" cy="-44" r="11" fill="none" stroke="#ffb454" stroke-opacity="0.5" stroke-width="1.3"/>
+      <!-- APAC node -->
+      <circle cx="92" cy="26" r="3.6" fill="#1fd1c8"/>
+      <circle cx="92" cy="26" r="9" fill="none" stroke="#1fd1c8" stroke-opacity="0.45" stroke-width="1.2"/>
+      <!-- minor dots -->
+      <circle cx="-30" cy="34" r="2.6" fill="#38bdf8"/>
+      <circle cx="-78" cy="6" r="2.6" fill="#b06bff"/>
+      <circle cx="58" cy="-8" r="2.4" fill="#2dd4bf"/>
+    </g>
+  </g>
+
+  <!-- TEXT BLOCK -->
+  <g transform="translate(512,0)" font-family="'Space Grotesk','Segoe UI',system-ui,Arial,sans-serif">
+    <g transform="translate(0,128)">
+      <circle cx="6" cy="-4" r="4" fill="#ff8c42"/>
+      <text x="20" y="0" fill="#ffb454" font-size="15" font-weight="600" letter-spacing="5">LIVE CONFERENCE ATLAS</text>
+    </g>
+    <text x="0" y="208" fill="#eef2f9" font-size="76" font-weight="700" letter-spacing="-1.5">Conference Atlas</text>
+    <text x="2" y="252" fill="#aeb9cf" font-size="23" font-weight="500">SEO · Marketing · AI-Search events — 2026 → 2027</text>
+    <text x="2" y="288" fill="#6f7d97" font-size="17" font-weight="400" font-family="'JetBrains Mono',ui-monospace,monospace">Interactive 3D globe + conference density heatmap</text>
+
+    <!-- category legend -->
+    <g transform="translate(2,330)" font-size="14" font-weight="500">
+      <circle cx="6" cy="-4" r="6" fill="#ff8c42"/><text x="20" y="0" fill="#c4cde0">SEO</text>
+      <circle cx="92" cy="-4" r="6" fill="#b06bff"/><text x="106" y="0" fill="#c4cde0">AI</text>
+      <circle cx="158" cy="-4" r="6" fill="#2dd4bf"/><text x="172" y="0" fill="#c4cde0">Content</text>
+      <circle cx="262" cy="-4" r="6" fill="#38bdf8"/><text x="276" y="0" fill="#c4cde0">Social</text>
+      <circle cx="352" cy="-4" r="6" fill="#f472b6"/><text x="366" y="0" fill="#c4cde0">Marketing</text>
+    </g>
+
+    <!-- heat scale -->
+    <g transform="translate(2,360)">
+      <rect x="0" y="0" width="300" height="8" rx="4" fill="url(#heat)"/>
+      <text x="0" y="28" fill="#6f7d97" font-size="12" font-family="'JetBrains Mono',ui-monospace,monospace">few events</text>
+      <text x="232" y="28" fill="#6f7d97" font-size="12" font-family="'JetBrains Mono',ui-monospace,monospace">hub</text>
+    </g>
+  </g>
+</svg>
