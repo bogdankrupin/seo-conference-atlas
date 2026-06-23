@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <a href="https://bogdankrupin.github.io/conference-atlas/"><strong>🌍 Live demo</strong></a>
+  <a href="https://bogdankrupin.github.io/seo-conference-atlas/"><strong>🌍 Live demo</strong></a>
   &nbsp;·&nbsp;
   <a href="#-conferences-on-the-map">Conference list</a>
   &nbsp;·&nbsp;
@@ -108,8 +108,8 @@ No tooling required:
 
 ```bash
 # clone, then just open the file
-git clone https://github.com/bogdankrupin/conference-atlas.git
-cd conference-atlas
+git clone https://github.com/bogdankrupin/seo-conference-atlas.git
+cd seo-conference-atlas
 open index.html        # macOS  (use 'start index.html' on Windows)
 ```
 
@@ -120,7 +120,7 @@ An internet connection is needed the first time so the globe libraries and Earth
 1. Push this repo (or fork it).
 2. **Settings → Pages → Build and deployment → Source → Deploy from a branch.**
 3. Branch **`main`**, folder **`/ (root)`** → **Save**.
-4. Your atlas goes live at `https://<your-username>.github.io/conference-atlas/` within ~1 minute.
+4. Your atlas goes live at `https://<your-username>.github.io/seo-conference-atlas/` within ~1 minute.
 
 Because the entry file is named `index.html`, Pages serves it straight from the root — no extra config.
 
