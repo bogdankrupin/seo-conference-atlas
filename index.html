@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Conference Atlas — SEO &amp; Marketing 2026/27</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script src="https://unpkg.com/globe.gl"></script>
+<style>
+  :root{
+    --bg:#05070d; --bg2:#070b14;
+    --panel:#0b111d; --panel2:#0e1726;
+    --border:#1a2740; --border-soft:#141d31;
+    --ink:#e9eef7; --muted:#7d8aa3; --faint:#56627b;
+    --signal:#ff8c42; --signal-soft:#ffb454;
+    --hot:#ff3b6b; --cool:#1fd1c8;
+    --shadow:0 20px 60px rgba(0,0,0,.55);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{
+    background:
+      radial-gradient(1200px 700px at 18% -8%, #0d1830 0%, transparent 55%),
+      radial-gradient(900px 600px at 110% 120%, #160e22 0%, transparent 50%),
+      var(--bg);
+    color:var(--ink);
+    font-family:"Inter",system-ui,sans-serif;
+    overflow:hidden;
+  }
+  .app{display:grid;grid-template-columns:1.55fr 1fr;height:100vh;width:100vw}
+
+  /* ---------- Globe pane ---------- */
+  .stage{position:relative;overflow:hidden;border-right:1px solid var(--border)}
+  #globe{position:absolute;inset:0}
+  #globe canvas{display:block}
+
+  .brand{position:absolute;top:26px;left:30px;z-index:6;pointer-events:none}
+  .brand .kicker{
+    font:500 11px/1 "JetBrains Mono",monospace;letter-spacing:.32em;
+    text-transform:uppercase;color:var(--signal-soft);margin-bottom:10px;
+  }
+  .brand h1{
+    font:600 30px/1.02 "Space Grotesk",sans-serif;letter-spacing:-.01em;margin:0;
+  }
+  .brand h1 em{font-style:normal;color:var(--signal)}
+  .brand .sub{margin-top:9px;font-size:13px;color:var(--muted);max-width:38ch}
+
+  .controls{position:absolute;left:30px;bottom:26px;z-index:6;display:flex;gap:10px}
+  .ctl{
+    appearance:none;cursor:pointer;border:1px solid var(--border);
+    background:rgba(11,17,29,.72);backdrop-filter:blur(8px);color:var(--ink);
+    font:500 12px/1 "JetBrains Mono",monospace;letter-spacing:.04em;
+    padding:10px 14px;border-radius:10px;transition:.18s;
+  }
+  .ctl:hover{border-color:var(--signal);color:var(--signal-soft)}
+  .ctl[aria-pressed="true"]{border-color:var(--signal);color:#0a0d14;background:var(--signal)}
+
+  .legend{
+    position:absolute;right:24px;bottom:26px;z-index:6;
+    background:rgba(11,17,29,.72);backdrop-filter:blur(8px);
+    border:1px solid var(--border);border-radius:12px;padding:13px 15px;width:208px;
+  }
+  .legend .lt{font:500 10px/1 "JetBrains Mono",monospace;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--faint);margin-bottom:9px}
+  .grad{height:9px;border-radius:5px;margin-bottom:6px;
+    background:linear-gradient(90deg,var(--cool),var(--signal-soft),var(--hot))}
+  .grad-labels{display:flex;justify-content:space-between;
+    font:500 10px/1 "JetBrains Mono",monospace;color:var(--muted)}
+
+  .selcard{
+    position:absolute;top:26px;right:24px;z-index:6;width:268px;
+    background:rgba(13,19,32,.86);backdrop-filter:blur(10px);
+    border:1px solid var(--border);border-left:3px solid var(--signal);
+    border-radius:12px;padding:16px 17px;box-shadow:var(--shadow);
+    opacity:0;transform:translateY(-8px);transition:.25s;pointer-events:none;
+  }
+  .selcard.on{opacity:1;transform:none}
+  .selcard .cat{font:500 10px/1 "JetBrains Mono",monospace;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--signal-soft)}
+  .selcard h3{font:600 18px/1.15 "Space Grotesk",sans-serif;margin:9px 0 3px}
+  .selcard .loc{font-size:13px;color:var(--muted)}
+  .selcard .dt{margin-top:11px;font:500 12px/1 "JetBrains Mono",monospace;color:var(--ink)}
+  .selcard .coords{margin-top:6px;font:400 11px/1.4 "JetBrains Mono",monospace;color:var(--faint)}
+
+  /* ---------- List pane ---------- */
+  .panel{display:flex;flex-direction:column;background:linear-gradient(180deg,var(--bg2),var(--bg));min-height:0}
+  .phead{padding:24px 26px 16px;border-bottom:1px solid var(--border-soft)}
+  .phead .row1{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+  .phead h2{font:600 16px/1 "Space Grotesk",sans-serif;margin:0;letter-spacing:.01em}
+  .count{font:500 12px/1 "JetBrains Mono",monospace;color:var(--signal-soft)}
+  .phead .span{margin-top:6px;font:400 12px/1 "JetBrains Mono",monospace;color:var(--faint)}
+
+  .filters{display:flex;gap:7px;flex-wrap:wrap;margin-top:15px}
+  .chip{cursor:pointer;border:1px solid var(--border);background:transparent;
+    color:var(--muted);font:500 11px/1 "Inter",sans-serif;letter-spacing:.02em;
+    padding:7px 12px;border-radius:999px;transition:.16s}
+  .chip:hover{color:var(--ink);border-color:#27375a}
+  .chip.active{background:var(--ink);color:#0a0d14;border-color:var(--ink)}
+
+  .list{overflow-y:auto;flex:1;padding:8px 14px 26px;min-height:0;scrollbar-width:thin;
+    scrollbar-color:#22304d transparent}
+  .list::-webkit-scrollbar{width:8px}
+  .list::-webkit-scrollbar-thumb{background:#1c2740;border-radius:4px}
+
+  .item{position:relative;display:grid;grid-template-columns:auto 1fr auto;gap:13px;
+    align-items:center;width:100%;text-align:left;cursor:pointer;
+    background:var(--panel);border:1px solid var(--border-soft);border-radius:13px;
+    padding:14px 15px;margin:7px 0;transition:.16s;color:inherit}
+  .item:hover{border-color:#26344f;background:var(--panel2);transform:translateX(2px)}
+  .item.active{border-color:var(--signal);background:#15151c;
+    box-shadow:0 0 0 1px rgba(255,140,66,.25)}
+  .item.active::before{content:"";position:absolute;left:-14px;top:14px;bottom:14px;
+    width:3px;border-radius:2px;background:var(--signal)}
+  .dot{width:11px;height:11px;border-radius:50%;box-shadow:0 0 12px currentColor}
+  .meta .nm{font:600 14px/1.2 "Space Grotesk",sans-serif}
+  .meta .lc{margin-top:3px;font-size:12px;color:var(--muted)}
+  .meta .tag{display:inline-block;margin-left:8px;font:500 9px/1 "JetBrains Mono",monospace;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--faint);
+    border:1px solid var(--border);border-radius:5px;padding:3px 5px;vertical-align:middle}
+  .when{text-align:right}
+  .when .d{font:500 12px/1.3 "JetBrains Mono",monospace;color:var(--ink)}
+  .when .tbc{font:400 9px/1 "JetBrains Mono",monospace;color:var(--faint);margin-top:3px}
+
+  .foot{padding:14px 26px;border-top:1px solid var(--border-soft);
+    font-size:11px;color:var(--faint);line-height:1.5}
+  .foot b{color:var(--muted);font-weight:600}
+
+  @media (max-width:880px){
+    body{overflow:auto}
+    .app{grid-template-columns:1fr;height:auto}
+    .stage{height:60vh;border-right:none;border-bottom:1px solid var(--border)}
+    .panel{height:auto}
+    .list{max-height:none}
+    .brand h1{font-size:24px}
+    .selcard{width:200px}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="app">
+  <!-- GLOBE -->
+  <section class="stage">
+    <div id="globe"></div>
+    <div class="brand">
+      <div class="kicker">Live Conference Atlas</div>
+      <h1>Where the <em>industry</em> meets</h1>
+      <div class="sub">SEO · marketing · AI-search conferences over the next 12 months. Heat zones mark where events cluster most.</div>
+    </div>
+
+    <div class="selcard" id="selcard">
+      <div class="cat" id="sc-cat">SEO</div>
+      <h3 id="sc-name">—</h3>
+      <div class="loc" id="sc-loc">—</div>
+      <div class="dt" id="sc-date">—</div>
+      <div class="coords" id="sc-coords">—</div>
+    </div>
+
+    <div class="controls">
+      <button class="ctl" id="spin" aria-pressed="true">◐ Rotate</button>
+      <button class="ctl" id="reset">⤾ Overview</button>
+    </div>
+
+    <div class="legend">
+      <div class="lt">Event density</div>
+      <div class="grad"></div>
+      <div class="grad-labels"><span>few</span><span>hub</span></div>
+    </div>
+  </section>
+
+  <!-- LIST -->
+  <aside class="panel">
+    <div class="phead">
+      <div class="row1">
+        <h2>Conference schedule</h2>
+        <span class="count" id="count">—</span>
+      </div>
+      <div class="span" id="span">—</div>
+      <div class="filters" id="filters">
+        <button class="chip active" data-region="all">All</button>
+        <button class="chip" data-region="Americas">Americas</button>
+        <button class="chip" data-region="Europe">Europe</button>
+        <button class="chip" data-region="APAC">APAC</button>
+      </div>
+    </div>
+    <div class="list" id="list"></div>
+    <div class="foot">
+      Tap a conference — the globe flies in and pulses over its location.
+      <b>· dates marked "tentative"</b> are not yet officially confirmed by organizers for 2027.
+    </div>
+  </aside>
+</div>
+
+<script>
+/* ---------------- DATA: real SEO / marketing / AI conferences, next ~12 months ---------------- */
+const CONF = [
+  {n:"MozCon",                    city:"New York", country:"USA",         region:"Americas", lat:40.7128, lng:-74.0060, d:"Jul 14, 2026",        iso:"2026-07-14", tbc:false, cat:"SEO"},
+  {n:"Digital Summit",            city:"Minneapolis", country:"USA",      region:"Americas", lat:44.9778, lng:-93.2650, d:"Aug 2026",            iso:"2026-08-19", tbc:true,  cat:"Marketing"},
+  {n:"State of Social",           city:"Perth", country:"Australia",      region:"APAC",     lat:-31.9523, lng:115.8613, d:"Aug 25–26, 2026",    iso:"2026-08-25", tbc:false, cat:"Social"},
+  {n:"Hospitality Social Summit", city:"London", country:"UK",            region:"Europe",   lat:51.5074, lng:-0.1278,  d:"Sep 3–4, 2026",       iso:"2026-09-03", tbc:false, cat:"Social"},
+  {n:"Dreamforce",                city:"San Francisco", country:"USA",     region:"Americas", lat:37.7749, lng:-122.4194,d:"Sep 15–17, 2026",     iso:"2026-09-15", tbc:false, cat:"MarTech"},
+  {n:"BrightonSEO US",            city:"San Diego", country:"USA",         region:"Americas", lat:32.7157, lng:-117.1611,d:"Sep 15–16, 2026",     iso:"2026-09-15", tbc:false, cat:"SEO"},
+  {n:"UNBOUND (INBOUND)",         city:"Boston", country:"USA",            region:"Americas", lat:42.3601, lng:-71.0589, d:"Sep 16–18, 2026",     iso:"2026-09-16", tbc:false, cat:"Marketing"},
+  {n:"DMEXCO",                    city:"Cologne", country:"Germany",       region:"Europe",   lat:50.9375, lng:6.9603,   d:"Sep 23–24, 2026",     iso:"2026-09-23", tbc:false, cat:"Digital"},
+  {n:"ANA AI for Marketers",      city:"Austin", country:"USA",            region:"Americas", lat:30.2672, lng:-97.7431, d:"Sep 23–25, 2026",     iso:"2026-09-23", tbc:false, cat:"AI"},
+  {n:"Pavilion GTM",              city:"New York", country:"USA",          region:"Americas", lat:40.7128, lng:-74.0060, d:"Sep 28 – Oct 1, 2026",iso:"2026-09-28", tbc:false, cat:"GTM"},
+  {n:"The AI Conference",         city:"San Francisco", country:"USA",     region:"Americas", lat:37.7749, lng:-122.4194,d:"Sep 29 – Oct 1, 2026",iso:"2026-09-29", tbc:false, cat:"AI"},
+  {n:"Content Marketing World",   city:"Denver", country:"USA",            region:"Americas", lat:39.7392, lng:-104.9903,d:"Oct 5–7, 2026",       iso:"2026-10-05", tbc:false, cat:"Content"},
+  {n:"Ahrefs Evolve",             city:"San Diego", country:"USA",         region:"Americas", lat:32.7157, lng:-117.1611,d:"Oct 12–13, 2026",     iso:"2026-10-12", tbc:false, cat:"SEO"},
+  {n:"MAICON",                    city:"Cleveland", country:"USA",         region:"Americas", lat:41.4993, lng:-81.6944, d:"Oct 13–15, 2026",     iso:"2026-10-13", tbc:false, cat:"AI"},
+  {n:"ANA Masters of Marketing",  city:"Orlando", country:"USA",           region:"Americas", lat:28.5383, lng:-81.3792, d:"Oct 20–23, 2026",     iso:"2026-10-20", tbc:false, cat:"Marketing"},
+  {n:"Pubcon Pro",                city:"Las Vegas", country:"USA",         region:"Americas", lat:36.1699, lng:-115.1398,d:"Q4 2026",             iso:"2026-10-15", tbc:true,  cat:"SEO"},
+  {n:"DMWF Europe",               city:"Lisbon", country:"Portugal",       region:"Europe",   lat:38.7223, lng:-9.1393,  d:"Nov 10–12, 2026",     iso:"2026-11-10", tbc:false, cat:"Digital"},
+  {n:"Web Summit",                city:"Lisbon", country:"Portugal",       region:"Europe",   lat:38.7223, lng:-9.1393,  d:"Nov 2026",            iso:"2026-11-02", tbc:true,  cat:"Tech"},
+  {n:"Chiang Mai SEO Conf.",      city:"Chiang Mai", country:"Thailand",   region:"APAC",     lat:18.7883, lng:98.9853,  d:"Nov 2026",            iso:"2026-11-20", tbc:true,  cat:"SEO"},
+  {n:"Tech SEO Connect",          city:"Durham", country:"USA",            region:"Americas", lat:35.9940, lng:-78.8986, d:"Dec 2026",            iso:"2026-12-04", tbc:true,  cat:"SEO"},
+  {n:"NRF Big Show",              city:"New York", country:"USA",          region:"Americas", lat:40.7128, lng:-74.0060, d:"Jan 2027",            iso:"2027-01-11", tbc:true,  cat:"Retail"},
+  {n:"WTSFest",                   city:"London", country:"UK",             region:"Europe",   lat:51.5074, lng:-0.1278,  d:"Feb 2027",            iso:"2027-02-05", tbc:true,  cat:"SEO"},
+  {n:"eTail West",                city:"Palm Springs", country:"USA",      region:"Americas", lat:33.8303, lng:-116.5453,d:"Feb 22–25, 2027",     iso:"2027-02-22", tbc:false, cat:"Ecommerce"},
+  {n:"SMX Munich",                city:"Munich", country:"Germany",        region:"Europe",   lat:48.1351, lng:11.5820,  d:"Mar 2027",            iso:"2027-03-10", tbc:true,  cat:"SEO"},
+  {n:"Visi Summit",               city:"Dubai", country:"UAE",             region:"APAC",     lat:25.2048, lng:55.2708,  d:"Mar 2027",            iso:"2027-03-15", tbc:true,  cat:"AI"},
+  {n:"friends of search",         city:"Amsterdam", country:"Netherlands", region:"Europe",   lat:52.3676, lng:4.9041,   d:"Mar 2027",            iso:"2027-03-11", tbc:true,  cat:"SEO"},
+  {n:"Sydney SEO Conference",     city:"Sydney", country:"Australia",      region:"APAC",     lat:-33.8688, lng:151.2093,d:"Mar 2027",            iso:"2027-03-18", tbc:true,  cat:"SEO"},
+  {n:"SEO Week",                  city:"New York", country:"USA",          region:"Americas", lat:40.7128, lng:-74.0060, d:"Apr 2027",            iso:"2027-04-27", tbc:true,  cat:"SEO"},
+  {n:"Social Media Mkt World",    city:"Anaheim", country:"USA",           region:"Americas", lat:33.8366, lng:-117.9143,d:"Apr 2027",            iso:"2027-04-28", tbc:true,  cat:"Social"},
+  {n:"Ahrefs Evolve Singapore",   city:"Singapore", country:"Singapore",   region:"APAC",     lat:1.3521,  lng:103.8198, d:"May 2027",            iso:"2027-05-13", tbc:true,  cat:"SEO"},
+  {n:"SMX Advanced",              city:"Berlin", country:"Germany",        region:"Europe",   lat:52.5200, lng:13.4050,  d:"Jun 2027",            iso:"2027-06-03", tbc:true,  cat:"SEO"}
+];
+CONF.sort((a,b)=>a.iso<b.iso?-1:1);
+
+const CAT_COLOR = {
+  SEO:"#ff8c42", AI:"#b06bff", Content:"#2dd4bf", Social:"#38bdf8",
+  Marketing:"#f472b6", Digital:"#fbbf24", MarTech:"#a3e635", GTM:"#fb7185",
+  Tech:"#60a5fa", Retail:"#f59e0b", Ecommerce:"#34d399"
+};
+const catColor = c => CAT_COLOR[c] || "#ff8c42";
+
+/* ---------------- Heatmap color scale (count -> teal..amber..hot) ---------------- */
+const STOPS=[[0,[31,209,200]],[0.5,[255,176,84]],[1,[255,59,107]]];
+function heatColor(t){
+  t=Math.max(0,Math.min(1,t));
+  for(let i=0;i<STOPS.length-1;i++){
+    const [a,ca]=STOPS[i],[b,cb]=STOPS[i+1];
+    if(t<=b){const f=(t-a)/(b-a);
+      const r=Math.round(ca[0]+(cb[0]-ca[0])*f);
+      const g=Math.round(ca[1]+(cb[1]-ca[1])*f);
+      const bl=Math.round(ca[2]+(cb[2]-ca[2])*f);
+      return `rgb(${r},${g},${bl})`;}
+  }
+  return "rgb(255,59,107)";
+}
+
+/* ---------------- Globe ---------------- */
+const el = document.getElementById('globe');
+let world, selected=-1, spinning=true;
+
+function buildGlobe(){
+  world = Globe()(el)
+    .width(el.clientWidth).height(el.clientHeight)
+    .backgroundColor("rgba(0,0,0,0)")
+    .globeImageUrl("https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg")
+    .bumpImageUrl("https://unpkg.com/three-globe/example/img/earth-topology.png")
+    .showAtmosphere(true).atmosphereColor("#4a86d6").atmosphereAltitude(0.20)
+    // ---- HEATMAP (hex density of conferences) ----
+    .hexBinPointsData(CONF)
+    .hexBinPointLat(d=>d.lat).hexBinPointLng(d=>d.lng)
+    .hexBinPointWeight(()=>1)
+    .hexBinResolution(3)
+    .hexMargin(0.28)
+    .hexBinMerge(false)
+    .hexTopColor(d=>heatColor((d.sumWeight-1)/5))
+    .hexSideColor(d=>heatColor((d.sumWeight-1)/5))
+    .hexAltitude(d=>0.012 + d.sumWeight*0.028)
+    .hexLabel(d=>`<div style="font:500 12px Inter,sans-serif;color:#fff">
+        <b>${d.sumWeight}</b> ${d.sumWeight===1?'event':'events'} nearby</div>`)
+    // ---- MARKERS (one per conference) ----
+    .pointsData(CONF)
+    .pointLat("lat").pointLng("lng")
+    .pointColor(d=> d===CONF[selected] ? "#ffffff" : catColor(d.cat))
+    .pointAltitude(d=> d===CONF[selected] ? 0.10 : 0.045)
+    .pointRadius(d=> d===CONF[selected] ? 0.55 : 0.30)
+    .pointsMerge(false)
+    .pointLabel(d=>`<div style="font:600 13px 'Space Grotesk',sans-serif;color:#fff">${d.n}</div>
+        <div style="font:400 11px Inter,sans-serif;color:#9fb0cc">${d.city} · ${d.d}</div>`)
+    .onPointClick(d=>select(CONF.indexOf(d)))
+    // ---- PULSE rings (active conference) ----
+    .ringsData([])
+    .ringLat("lat").ringLng("lng")
+    .ringColor(()=>t=>`rgba(255,140,66,${1-t})`)
+    .ringMaxRadius(6).ringPropagationSpeed(2.2).ringRepeatPeriod(620)
+    .ringAltitude(0.011);
+
+  world.pointOfView({lat:34, lng:-38, altitude:2.35}, 0);
+  const ctr = world.controls();
+  ctr.autoRotate = true; ctr.autoRotateSpeed = 0.42;
+  ctr.enableZoom = true; ctr.minDistance = 180; ctr.maxDistance = 600;
+}
+
+/* ---------------- Selection ---------------- */
+function select(i){
+  if(i<0||i>=CONF.length) return;
+  selected=i; const c=CONF[i];
+  // globe reactions
+  world.pointsData(CONF);                 // refresh marker styles
+  world.ringsData([{lat:c.lat,lng:c.lng}]);
+  spinning=false; world.controls().autoRotate=false; setSpinBtn();
+  world.pointOfView({lat:c.lat, lng:c.lng, altitude:1.55}, 1100);
+  // selection card
+  const card=document.getElementById('selcard');
+  document.getElementById('sc-cat').textContent=c.cat;
+  document.getElementById('sc-cat').style.color=catColor(c.cat);
+  document.getElementById('selcard').style.borderLeftColor=catColor(c.cat);
+  document.getElementById('sc-name').textContent=c.n;
+  document.getElementById('sc-loc').textContent=`${c.city}, ${c.country}`;
+  document.getElementById('sc-date').textContent=c.d + (c.tbc?"  · tentative":"");
+  document.getElementById('sc-coords').textContent=
+    `${c.lat.toFixed(2)}°, ${c.lng.toFixed(2)}°`;
+  card.classList.add('on');
+  // list state
+  document.querySelectorAll('.item').forEach(el=>el.classList.remove('active'));
+  const node=document.querySelector(`.item[data-i="${i}"]`);
+  if(node){node.classList.add('active');node.scrollIntoView({block:'nearest',behavior:'smooth'});}
+}
+
+/* ---------------- List rendering ---------------- */
+const listEl=document.getElementById('list');
+let region="all";
+function render(){
+  const items=CONF.map((c,i)=>({c,i})).filter(x=>region==="all"||x.c.region===region);
+  listEl.innerHTML="";
+  items.forEach(({c,i})=>{
+    const b=document.createElement('button');
+    b.className="item"+(i===selected?" active":"");
+    b.dataset.i=i;
+    b.innerHTML=`
+      <span class="dot" style="color:${catColor(c.cat)};background:${catColor(c.cat)}"></span>
+      <span class="meta">
+        <span class="nm">${c.n}<span class="tag">${c.cat}</span></span>
+        <span class="lc">${c.city}, ${c.country}</span>
+      </span>
+      <span class="when"><span class="d">${c.d}</span>${c.tbc?'<div class="tbc">tentative</div>':''}</span>`;
+    b.addEventListener('click',()=>select(i));
+    listEl.appendChild(b);
+  });
+  document.getElementById('count').textContent=items.length+" events";
+}
+// header span
+const first=CONF[0], last=CONF[CONF.length-1];
+document.getElementById('span').textContent=`${first.d} → ${last.d}`;
+
+// filters
+document.getElementById('filters').addEventListener('click',e=>{
+  const chip=e.target.closest('.chip'); if(!chip)return;
+  document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+  chip.classList.add('active'); region=chip.dataset.region; render();
+});
+
+/* ---------------- Controls ---------------- */
+function setSpinBtn(){const b=document.getElementById('spin');b.setAttribute('aria-pressed',spinning);}
+document.getElementById('spin').addEventListener('click',()=>{
+  spinning=!spinning; world.controls().autoRotate=spinning; setSpinBtn();
+});
+document.getElementById('reset').addEventListener('click',()=>{
+  selected=-1; world.pointsData(CONF); world.ringsData([]);
+  document.getElementById('selcard').classList.remove('on');
+  document.querySelectorAll('.item').forEach(el=>el.classList.remove('active'));
+  spinning=true; world.controls().autoRotate=true; setSpinBtn();
+  world.pointOfView({lat:34,lng:-38,altitude:2.35},1100);
+});
+
+/* ---------------- Init + resize ---------------- */
+function init(){ buildGlobe(); render(); }
+if(window.Globe){init();}
+else{ // wait for CDN
+  let tries=0;const iv=setInterval(()=>{
+    if(window.Globe){clearInterval(iv);init();}
+    else if(++tries>60){clearInterval(iv);
+      el.innerHTML='<div style="position:absolute;inset:0;display:grid;place-items:center;'+
+        'color:#7d8aa3;font:500 13px Inter,sans-serif;text-align:center;padding:30px">'+
+        'Could not load the 3D library.<br>An internet connection is required (open this file online / on a host).</div>';}
+  },120);
+}
+let rt;window.addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>{
+  if(world){world.width(el.clientWidth).height(el.clientHeight);}
+},180);});
+</script>
+</body>
+</html>
