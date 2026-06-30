@@ -1,6 +1,6 @@
 {
   "schema": "conference-atlas/v2",
-  "generated_at": "2026-06-30T12:51:11+00:00",
+  "generated_at": "2026-06-30T13:19:57+00:00",
   "source": "us",
   "engines": [
     "ai-overview"
@@ -21,8 +21,8 @@
       "cat": "SEO",
       "domain": "moz.com",
       "url": "https://moz.com",
-      "ai": null,
-      "ai_prompts": null
+      "ai": 95,
+      "ai_prompts": 7707
     },
     {
       "n": "Digital Summit",
@@ -37,8 +37,8 @@
       "cat": "Marketing",
       "domain": "digitalsummit.com",
       "url": "https://digitalsummit.com",
-      "ai": null,
-      "ai_prompts": null
+      "ai": 0,
+      "ai_prompts": 0
     },
     {
       "n": "State of Social",
@@ -53,8 +53,8 @@
       "cat": "Social",
       "domain": "stateofsocial.com",
       "url": "https://stateofsocial.com",
-      "ai": null,
-      "ai_prompts": null
+      "ai": 0,
+      "ai_prompts": 0
     },
     {
       "n": "Hospitality Social Summit",
@@ -69,8 +69,8 @@
       "cat": "Social",
       "domain": "",
       "url": "",
-      "ai": null,
-      "ai_prompts": null
+      "ai": 0,
+      "ai_prompts": 0
     },
     {
       "n": "Dreamforce",
@@ -85,8 +85,8 @@
       "cat": "MarTech",
       "domain": "salesforce.com",
       "url": "https://salesforce.com",
-      "ai": null,
-      "ai_prompts": null
+      "ai": 0,
+      "ai_prompts": 0
     },
     {
       "n": "BrightonSEO US",
@@ -101,8 +101,8 @@
       "cat": "SEO",
       "domain": "brightonseo.com",
       "url": "https://brightonseo.com",
-      "ai": null,
-      "ai_prompts": null
+      "ai": 38,
+      "ai_prompts": 34
     },
     {
       "n": "UNBOUND (INBOUND)",
@@ -117,8 +117,8 @@
       "cat": "Marketing",
       "domain": "inbound.com",
       "url": "https://inbound.com",
-      "ai": null,
-      "ai_prompts": null
+      "ai": 0,
+      "ai_prompts": 0
     },
     {
       "n": "DMEXCO",
@@ -133,8 +133,8 @@
       "cat": "Digital",
       "domain": "dmexco.com",
       "url": "https://dmexco.com",
-      "ai": null,
-      "ai_prompts": null
+      "ai": 58,
+      "ai_prompts": 247
     },
     {
       "n": "ANA AI for Marketers",
@@ -149,8 +149,8 @@
       "cat": "AI",
       "domain": "ana.net",
       "url": "https://ana.net",
-      "ai": null,
-      "ai_prompts": null
+      "ai": 0,
+      "ai_prompts": 0
     },
     {
       "n": "Pavilion GTM",
@@ -165,8 +165,8 @@
       "cat": "GTM",
       "domain": "joinpavilion.com",
       "url": "https://joinpavilion.com",
-      "ai": null,
-      "ai_prompts": null
+      "ai": 7,
+      "ai_prompts": 1
     },
     {
       "n": "The AI Conference",
@@ -181,8 +181,8 @@
       "cat": "AI",
       "domain": "aiconference.com",
       "url": "https://aiconference.com",
-      "ai": null,
-      "ai_prompts": null
+      "ai": 41,
+      "ai_prompts": 45
     },
     {
       "n": "Content Marketing World",
@@ -197,8 +197,8 @@
       "cat": "Content",
       "domain": "contentmarketingworld.com",
       "url": "https://contentmarketingworld.com",
-      "ai": null,
-      "ai_prompts": null
+      "ai": 0,
+      "ai_prompts": 0
     },
     {
       "n": "Ahrefs Evolve",
@@ -213,8 +213,8 @@
       "cat": "SEO",
       "domain": "ahrefs.com",
       "url": "https://ahrefs.com",
-      "ai": null,
-      "ai_prompts": null
+      "ai": 100,
+      "ai_prompts": 12686
     },
     {
       "n": "MAICON",
@@ -229,8 +229,8 @@
       "cat": "AI",
       "domain": "maicon.ai",
       "url": "https://maicon.ai",
-      "ai": null,
-      "ai_prompts": null
+      "ai": 0,
+      "ai_prompts": 0
     },
     {
       "n": "Pubcon Pro",
@@ -245,8 +245,8 @@
       "cat": "SEO",
       "domain": "pubcon.com",
       "url": "https://pubcon.com",
-      "ai": null,
-      "ai_prompts": null
+      "ai": 0,
+      "ai_prompts": 0
     },
     {
       "n": "ANA Masters of Marketing",
@@ -261,8 +261,8 @@
       "cat": "Marketing",
       "domain": "ana.net",
       "url": "https://ana.net",
-      "ai": null,
-      "ai_prompts": null
+      "ai": 0,
+      "ai_prompts": 0
     },
     {
       "n": "Web Summit",
@@ -277,8 +277,8 @@
       "cat": "Tech",
       "domain": "websummit.com",
       "url": "https://websummit.com",
-      "ai": null,
-      "ai_prompts": null
+      "ai": 50,
+      "ai_prompts": 113
     },
     {
       "n": "DMWF Europe",
@@ -293,8 +293,8 @@
       "cat": "Digital",
       "domain": "digitalmarketing-conference.com",
       "url": "https://digitalmarketing-conference.com",
-      "ai": null,
-      "ai_prompts": null
+      "ai": 19,
+      "ai_prompts": 5
     },
     {
       "n": "Chiang Mai SEO Conf.",
@@ -309,8 +309,8 @@
       "cat": "SEO",
       "domain": "chiangmaiseoconference.com",
       "url": "https://chiangmaiseoconference.com",
-      "ai": null,
-      "ai_prompts": null
+      "ai": 12,
+      "ai_prompts": 2
     },
     {
       "n": "Tech SEO Connect",
@@ -325,8 +325,8 @@
       "cat": "SEO",
       "domain": "",
       "url": "",
-      "ai": null,
-      "ai_prompts": null
+      "ai": 22,
+      "ai_prompts": 7
     },
     {
       "n": "NRF Big Show",
@@ -341,8 +341,8 @@
       "cat": "Retail",
       "domain": "nrfbigshow.nrf.com",
       "url": "https://nrfbigshow.nrf.com",
-      "ai": null,
-      "ai_prompts": null
+      "ai": 43,
+      "ai_prompts": 57
     },
     {
       "n": "WTSFest",
@@ -357,8 +357,8 @@
       "cat": "SEO",
       "domain": "womenintechseo.com",
       "url": "https://womenintechseo.com",
-      "ai": null,
-      "ai_prompts": null
+      "ai": 0,
+      "ai_prompts": 0
     },
     {
       "n": "eTail West",
@@ -373,8 +373,8 @@
       "cat": "Ecommerce",
       "domain": "etailwest.wbresearch.com",
       "url": "https://etailwest.wbresearch.com",
-      "ai": null,
-      "ai_prompts": null
+      "ai": 55,
+      "ai_prompts": 172
     },
     {
       "n": "SMX Munich",
@@ -389,8 +389,8 @@
       "cat": "SEO",
       "domain": "smxexpo.com",
       "url": "https://smxexpo.com",
-      "ai": null,
-      "ai_prompts": null
+      "ai": 0,
+      "ai_prompts": 0
     },
     {
       "n": "friends of search",
@@ -405,8 +405,8 @@
       "cat": "SEO",
       "domain": "friendsofsearch.com",
       "url": "https://friendsofsearch.com",
-      "ai": null,
-      "ai_prompts": null
+      "ai": 0,
+      "ai_prompts": 0
     },
     {
       "n": "Visi Summit",
@@ -421,8 +421,8 @@
       "cat": "AI",
       "domain": "",
       "url": "",
-      "ai": null,
-      "ai_prompts": null
+      "ai": 0,
+      "ai_prompts": 0
     },
     {
       "n": "Sydney SEO Conference",
@@ -437,8 +437,8 @@
       "cat": "SEO",
       "domain": "",
       "url": "",
-      "ai": null,
-      "ai_prompts": null
+      "ai": 12,
+      "ai_prompts": 2
     },
     {
       "n": "SEO Week",
@@ -453,8 +453,8 @@
       "cat": "SEO",
       "domain": "seoweek.org",
       "url": "https://seoweek.org",
-      "ai": null,
-      "ai_prompts": null
+      "ai": 0,
+      "ai_prompts": 0
     },
     {
       "n": "Social Media Mkt World",
@@ -469,8 +469,8 @@
       "cat": "Social",
       "domain": "socialmediaexaminer.com",
       "url": "https://socialmediaexaminer.com",
-      "ai": null,
-      "ai_prompts": null
+      "ai": 0,
+      "ai_prompts": 0
     },
     {
       "n": "Ahrefs Evolve Singapore",
@@ -485,8 +485,8 @@
       "cat": "SEO",
       "domain": "ahrefs.com",
       "url": "https://ahrefs.com",
-      "ai": null,
-      "ai_prompts": null
+      "ai": 100,
+      "ai_prompts": 12686
     },
     {
       "n": "SMX Advanced",
@@ -501,8 +501,8 @@
       "cat": "SEO",
       "domain": "smxexpo.com",
       "url": "https://smxexpo.com",
-      "ai": null,
-      "ai_prompts": null
+      "ai": 0,
+      "ai_prompts": 0
     }
   ]
 }
