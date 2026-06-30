@@ -1,0 +1,69 @@
+name: Refresh Conference Atlas
+
+# Refreshes data/conferences.json with live SE Ranking AI-visibility scores
+# (and optional Claude web-search discovery of new events), then commits it.
+
+on:
+  schedule:
+    - cron: "17 6 * * 1"        # every Monday 06:17 UTC (AI Search data updates monthly; weekly is plenty)
+  workflow_dispatch:
+    inputs:
+      engines:
+        description: "LLM engines (comma list). More engines = more credits."
+        default: "ai-overview"
+        type: string
+      discover:
+        description: "Run Claude web-search discovery of new events?"
+        default: "0"
+        type: choice
+        options: ["0", "1"]
+      window_months:
+        description: "Discovery horizon in months"
+        default: "12"
+        type: string
+      source:
+        description: "Regional prompt database (country code)"
+        default: "us"
+        type: string
+
+permissions:
+  contents: write              # needed to commit the refreshed JSON
+
+concurrency:
+  group: atlas-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Refresh data
+        env:
+          SERANKING_API_KEY: ${{ secrets.SERANKING_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ENGINES:       ${{ github.event.inputs.engines || 'ai-overview' }}
+          DISCOVER:      ${{ github.event.inputs.discover || '0' }}
+          WINDOW_MONTHS: ${{ github.event.inputs.window_months || '12' }}
+          SOURCE:        ${{ github.event.inputs.source || 'us' }}
+          MAX_REQUESTS:  "120"     # credit guard: hard cap on SE Ranking calls per run
+        run: python scripts/refresh.py
+
+      - name: Commit if changed
+        run: |
+          git config user.name  "atlas-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/conferences.json
+          if git diff --staged --quiet; then
+            echo "No changes."
+          else
+            git commit -m "data: refresh AI-visibility scores ($(date -u +%Y-%m-%d))"
+            git push
+          fi
