@@ -6,8 +6,9 @@ What it does, in order:
   1. Loads the current data/conferences.json (your curated seed survives every run).
   2. (Optional) DISCOVERY: asks Claude + web_search for upcoming SEO/marketing/AI
      conferences in the window that aren't already in the file, and merges them in.
-  3. ENRICHMENT: for every conference, asks SE Ranking AI Search how visible its
-     site/brand is inside LLM answers (prompts-by-target -> `total`), per engine.
+  3. ENRICHMENT: for every conference, asks SE Ranking AI Search how often the
+     EVENT brand is mentioned in LLM answers (prompts-by-brand -> `total`), per engine.
+     Falls back to the site domain (base_domain) only if the brand call errors out.
   4. SCORING: normalizes those totals into a 0-100 AI-visibility score (`ai`).
   5. Writes data/conferences.json back with a fresh `generated_at` timestamp.
 
@@ -86,7 +87,7 @@ def prompts_total_by_target(domain, engine):
     if req_count >= MAX_REQ:
         return None
     q = urllib.parse.urlencode({
-        "target": domain, "scope": "domain", "source": SOURCE,
+        "target": domain, "scope": "base_domain", "source": SOURCE,
         "engine": engine, "limit": 1,
     })
     url = f"{SR_BASE}/ai-search/prompts-by-target?{q}"
@@ -140,6 +141,7 @@ Return ONLY a JSON array (no prose, no markdown) of NEW events. Each item MUST b
   "iso": "YYYY-MM-DD" (start date, your best estimate if exact day unknown),
   "tbc": true|false (true if the date is not officially confirmed),
   "cat": "SEO"|"AI"|"Content"|"Social"|"Marketing"|"Digital"|"MarTech"|"GTM"|"Tech"|"Retail"|"Ecommerce",
+  "brand": "Cleanest distinctive event name to search for in AI answers, e.g. 'BrightonSEO' not 'Brighton SEO US 2026'",
   "domain": "official-site-domain.com (no protocol, no path)"}}
 
 Rules: real events only; accurate lat/lng for the host city; up to {max_new} items; if unsure of a domain leave it "". Output the JSON array and nothing else."""
@@ -191,6 +193,7 @@ def discover_new(known_names):
             "d": it.get("d", ""), "iso": it.get("iso", ""),
             "tbc": bool(it.get("tbc", True)),
             "cat": it.get("cat", "Marketing"),
+            "brand": (it.get("brand") or it.get("n") or "").strip(),
             "domain": (it.get("domain") or "").replace("https://", "").replace("http://", "").strip("/"),
             "url": ("https://" + it["domain"]) if it.get("domain") else "",
             "ai": None, "ai_prompts": None,
@@ -238,14 +241,21 @@ def main():
         log(f"-> enrichment via SE Ranking AI Search · engines={ENGINES} source={SOURCE}")
         for c in confs:
             total = None
+            brand  = (c.get("brand") or c.get("n") or "").strip()
             domain = (c.get("domain") or "").strip()
+            used   = "brand"
             for eng in ENGINES:
-                t = prompts_total_by_target(domain, eng) if domain else prompts_total_by_brand(c["n"], eng)
+                # primary signal: how often the EVENT brand is mentioned in LLM answers
+                t = prompts_total_by_brand(brand, eng)
+                # fallback only on a hard error (t is None), never on a legit 0
+                if t is None and domain:
+                    t = prompts_total_by_target(domain, eng); used = "domain"
                 if t is not None:
                     total = (total or 0) + t
                 time.sleep(0.25)
             c["ai_prompts"] = total
-            log(f"   {c['n']:<32} {'('+domain+')' if domain else '[brand]':<28} -> {total}")
+            tag = f'"{brand}"' if used == "brand" else f'({domain})'
+            log(f"   {c['n']:<32} {tag:<30} -> {total}")
             if req_count >= MAX_REQ:
                 log(f"   . hit MAX_REQUESTS={MAX_REQ}, stopping enrichment early"); break
         score(confs)
