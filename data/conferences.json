@@ -1,6 +1,6 @@
 {
   "schema": "conference-atlas/v2",
-  "generated_at": "2026-07-06T17:29:39+00:00",
+  "generated_at": "2026-07-13T14:02:10+00:00",
   "source": "us",
   "engines": [
     "ai-overview"
@@ -39,7 +39,7 @@
       "domain": "digitalsummit.com",
       "url": "https://digitalsummit.com",
       "ai": 83,
-      "ai_prompts": 203,
+      "ai_prompts": 204,
       "brand": "Digital Summit"
     },
     {
@@ -90,7 +90,7 @@
       "domain": "salesforce.com",
       "url": "https://salesforce.com",
       "ai": 100,
-      "ai_prompts": 617,
+      "ai_prompts": 618,
       "brand": "Dreamforce"
     },
     {
@@ -124,7 +124,7 @@
       "domain": "inbound.com",
       "url": "https://inbound.com",
       "ai": 94,
-      "ai_prompts": 430,
+      "ai_prompts": 431,
       "brand": "INBOUND"
     },
     {
@@ -141,7 +141,7 @@
       "domain": "dmexco.com",
       "url": "https://dmexco.com",
       "ai": 77,
-      "ai_prompts": 138,
+      "ai_prompts": 139,
       "brand": "DMEXCO"
     },
     {
@@ -344,8 +344,8 @@
       "cat": "SEO",
       "domain": "",
       "url": "",
-      "ai": 36,
-      "ai_prompts": 9,
+      "ai": null,
+      "ai_prompts": null,
       "brand": "Tech SEO Connect"
     },
     {
