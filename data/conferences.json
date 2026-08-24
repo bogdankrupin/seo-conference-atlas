@@ -1,6 +1,6 @@
 {
   "schema": "conference-atlas/v2",
-  "generated_at": "2026-08-17T07:24:34+00:00",
+  "generated_at": "2026-08-24T07:27:50+00:00",
   "source": "us",
   "engines": [
     "ai-overview"
@@ -90,7 +90,7 @@
       "domain": "salesforce.com",
       "url": "https://salesforce.com",
       "ai": 100,
-      "ai_prompts": 688,
+      "ai_prompts": 690,
       "brand": "Dreamforce"
     },
     {
