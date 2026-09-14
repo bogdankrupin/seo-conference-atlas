@@ -1,6 +1,6 @@
 {
   "schema": "conference-atlas/v2",
-  "generated_at": "2026-09-07T12:36:23+00:00",
+  "generated_at": "2026-09-14T12:51:12+00:00",
   "source": "us",
   "engines": [
     "ai-overview"
@@ -90,7 +90,7 @@
       "domain": "salesforce.com",
       "url": "https://salesforce.com",
       "ai": 100,
-      "ai_prompts": 711,
+      "ai_prompts": 712,
       "brand": "Dreamforce"
     },
     {
@@ -124,7 +124,7 @@
       "domain": "inbound.com",
       "url": "https://inbound.com",
       "ai": 95,
-      "ai_prompts": 498,
+      "ai_prompts": 500,
       "brand": "INBOUND"
     },
     {
@@ -311,7 +311,7 @@
       "domain": "digitalmarketing-conference.com",
       "url": "https://digitalmarketing-conference.com",
       "ai": 92,
-      "ai_prompts": 410,
+      "ai_prompts": 411,
       "brand": "DMWF"
     },
     {
