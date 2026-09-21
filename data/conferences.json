@@ -1,6 +1,6 @@
 {
   "schema": "conference-atlas/v2",
-  "generated_at": "2026-09-14T12:51:12+00:00",
+  "generated_at": "2026-09-21T12:52:54+00:00",
   "source": "us",
   "engines": [
     "ai-overview"
@@ -141,7 +141,7 @@
       "domain": "dmexco.com",
       "url": "https://dmexco.com",
       "ai": 75,
-      "ai_prompts": 134,
+      "ai_prompts": 135,
       "brand": "DMEXCO"
     },
     {
@@ -192,7 +192,7 @@
       "domain": "aiconference.com",
       "url": "https://aiconference.com",
       "ai": 66,
-      "ai_prompts": 74,
+      "ai_prompts": 75,
       "brand": "The AI Conference"
     },
     {
