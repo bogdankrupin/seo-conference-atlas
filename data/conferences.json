@@ -1,6 +1,6 @@
 {
   "schema": "conference-atlas/v2",
-  "generated_at": "2026-09-21T12:52:54+00:00",
+  "generated_at": "2026-09-28T13:59:10+00:00",
   "source": "us",
   "engines": [
     "ai-overview"
@@ -21,7 +21,7 @@
       "cat": "SEO",
       "domain": "moz.com",
       "url": "https://moz.com",
-      "ai": 78,
+      "ai": 66,
       "ai_prompts": 166,
       "brand": "MozCon"
     },
@@ -38,7 +38,7 @@
       "cat": "Marketing",
       "domain": "digitalsummit.com",
       "url": "https://digitalsummit.com",
-      "ai": 83,
+      "ai": 70,
       "ai_prompts": 225,
       "brand": "Digital Summit"
     },
@@ -55,7 +55,7 @@
       "cat": "Social",
       "domain": "stateofsocial.com",
       "url": "https://stateofsocial.com",
-      "ai": 92,
+      "ai": 78,
       "ai_prompts": 417,
       "brand": "State of Social"
     },
@@ -89,7 +89,7 @@
       "cat": "MarTech",
       "domain": "salesforce.com",
       "url": "https://salesforce.com",
-      "ai": 100,
+      "ai": 85,
       "ai_prompts": 712,
       "brand": "Dreamforce"
     },
@@ -106,7 +106,7 @@
       "cat": "SEO",
       "domain": "brightonseo.com",
       "url": "https://brightonseo.com",
-      "ai": 50,
+      "ai": 43,
       "ai_prompts": 26,
       "brand": "BrightonSEO"
     },
@@ -123,7 +123,7 @@
       "cat": "Marketing",
       "domain": "inbound.com",
       "url": "https://inbound.com",
-      "ai": 95,
+      "ai": 81,
       "ai_prompts": 500,
       "brand": "INBOUND"
     },
@@ -140,7 +140,7 @@
       "cat": "Digital",
       "domain": "dmexco.com",
       "url": "https://dmexco.com",
-      "ai": 75,
+      "ai": 64,
       "ai_prompts": 135,
       "brand": "DMEXCO"
     },
@@ -157,7 +157,7 @@
       "cat": "AI",
       "domain": "ana.net",
       "url": "https://ana.net",
-      "ai": 11,
+      "ai": 9,
       "ai_prompts": 1,
       "brand": "ANA AI for Marketers"
     },
@@ -191,7 +191,7 @@
       "cat": "AI",
       "domain": "aiconference.com",
       "url": "https://aiconference.com",
-      "ai": 66,
+      "ai": 56,
       "ai_prompts": 75,
       "brand": "The AI Conference"
     },
@@ -208,7 +208,7 @@
       "cat": "Content",
       "domain": "contentmarketingworld.com",
       "url": "https://contentmarketingworld.com",
-      "ai": 82,
+      "ai": 70,
       "ai_prompts": 224,
       "brand": "Content Marketing World"
     },
@@ -225,7 +225,7 @@
       "cat": "SEO",
       "domain": "ahrefs.com",
       "url": "https://ahrefs.com",
-      "ai": 42,
+      "ai": 36,
       "ai_prompts": 15,
       "brand": "Ahrefs Evolve"
     },
@@ -242,7 +242,7 @@
       "cat": "AI",
       "domain": "maicon.ai",
       "url": "https://maicon.ai",
-      "ai": 59,
+      "ai": 51,
       "ai_prompts": 48,
       "brand": "MAICON"
     },
@@ -259,7 +259,7 @@
       "cat": "SEO",
       "domain": "pubcon.com",
       "url": "https://pubcon.com",
-      "ai": 60,
+      "ai": 51,
       "ai_prompts": 51,
       "brand": "Pubcon"
     },
@@ -276,7 +276,7 @@
       "cat": "Marketing",
       "domain": "ana.net",
       "url": "https://ana.net",
-      "ai": 63,
+      "ai": 54,
       "ai_prompts": 61,
       "brand": "ANA Masters of Marketing"
     },
@@ -293,7 +293,7 @@
       "cat": "Tech",
       "domain": "websummit.com",
       "url": "https://websummit.com",
-      "ai": 91,
+      "ai": 77,
       "ai_prompts": 384,
       "brand": "Web Summit"
     },
@@ -310,7 +310,7 @@
       "cat": "Digital",
       "domain": "digitalmarketing-conference.com",
       "url": "https://digitalmarketing-conference.com",
-      "ai": 92,
+      "ai": 78,
       "ai_prompts": 411,
       "brand": "DMWF"
     },
@@ -327,7 +327,7 @@
       "cat": "SEO",
       "domain": "chiangmaiseoconference.com",
       "url": "https://chiangmaiseoconference.com",
-      "ai": 35,
+      "ai": 30,
       "ai_prompts": 9,
       "brand": "Chiang Mai SEO Conference"
     },
@@ -344,8 +344,8 @@
       "cat": "SEO",
       "domain": "",
       "url": "",
-      "ai": 32,
-      "ai_prompts": 7,
+      "ai": null,
+      "ai_prompts": null,
       "brand": "Tech SEO Connect"
     },
     {
@@ -361,8 +361,8 @@
       "cat": "Retail",
       "domain": "nrfbigshow.nrf.com",
       "url": "https://nrfbigshow.nrf.com",
-      "ai": 50,
-      "ai_prompts": 25,
+      "ai": 100,
+      "ai_prompts": 2212,
       "brand": "NRF Big Show"
     },
     {
@@ -378,7 +378,7 @@
       "cat": "SEO",
       "domain": "womenintechseo.com",
       "url": "https://womenintechseo.com",
-      "ai": 40,
+      "ai": 34,
       "ai_prompts": 13,
       "brand": "WTSFest"
     },
@@ -395,7 +395,7 @@
       "cat": "Ecommerce",
       "domain": "etailwest.wbresearch.com",
       "url": "https://etailwest.wbresearch.com",
-      "ai": 52,
+      "ai": 44,
       "ai_prompts": 29,
       "brand": "eTail West"
     },
@@ -412,7 +412,7 @@
       "cat": "SEO",
       "domain": "smxexpo.com",
       "url": "https://smxexpo.com",
-      "ai": 33,
+      "ai": 29,
       "ai_prompts": 8,
       "brand": "SMX Munich"
     },
@@ -463,7 +463,7 @@
       "cat": "SEO",
       "domain": "",
       "url": "",
-      "ai": 17,
+      "ai": 14,
       "ai_prompts": 2,
       "brand": "Sydney SEO Conference"
     },
@@ -480,7 +480,7 @@
       "cat": "SEO",
       "domain": "seoweek.org",
       "url": "https://seoweek.org",
-      "ai": 42,
+      "ai": 36,
       "ai_prompts": 15,
       "brand": "SEO Week"
     },
@@ -497,7 +497,7 @@
       "cat": "Social",
       "domain": "socialmediaexaminer.com",
       "url": "https://socialmediaexaminer.com",
-      "ai": 76,
+      "ai": 65,
       "ai_prompts": 146,
       "brand": "Social Media Marketing World"
     },
@@ -514,7 +514,7 @@
       "cat": "SEO",
       "domain": "ahrefs.com",
       "url": "https://ahrefs.com",
-      "ai": 42,
+      "ai": 36,
       "ai_prompts": 15,
       "brand": "Ahrefs Evolve"
     },
@@ -531,7 +531,7 @@
       "cat": "SEO",
       "domain": "smxexpo.com",
       "url": "https://smxexpo.com",
-      "ai": 56,
+      "ai": 48,
       "ai_prompts": 39,
       "brand": "SMX Advanced"
     }
