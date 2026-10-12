@@ -1,6 +1,6 @@
 {
   "schema": "conference-atlas/v2",
-  "generated_at": "2026-10-05T14:32:46+00:00",
+  "generated_at": "2026-10-12T15:18:29+00:00",
   "source": "us",
   "engines": [
     "ai-overview"
@@ -90,7 +90,7 @@
       "domain": "salesforce.com",
       "url": "https://salesforce.com",
       "ai": 100,
-      "ai_prompts": 700,
+      "ai_prompts": 705,
       "brand": "Dreamforce"
     },
     {
@@ -124,7 +124,7 @@
       "domain": "inbound.com",
       "url": "https://inbound.com",
       "ai": 70,
-      "ai_prompts": 96,
+      "ai_prompts": 95,
       "brand": "INBOUND"
     },
     {
@@ -141,7 +141,7 @@
       "domain": "dmexco.com",
       "url": "https://dmexco.com",
       "ai": 74,
-      "ai_prompts": 123,
+      "ai_prompts": 124,
       "brand": "DMEXCO"
     },
     {
@@ -209,7 +209,7 @@
       "domain": "contentmarketingworld.com",
       "url": "https://contentmarketingworld.com",
       "ai": 66,
-      "ai_prompts": 76,
+      "ai_prompts": 77,
       "brand": "Content Marketing World"
     },
     {
@@ -259,8 +259,8 @@
       "cat": "SEO",
       "domain": "pubcon.com",
       "url": "https://pubcon.com",
-      "ai": 50,
-      "ai_prompts": 26,
+      "ai": 51,
+      "ai_prompts": 27,
       "brand": "Pubcon"
     },
     {
@@ -276,7 +276,7 @@
       "cat": "Marketing",
       "domain": "ana.net",
       "url": "https://ana.net",
-      "ai": 34,
+      "ai": 33,
       "ai_prompts": 8,
       "brand": "ANA Masters of Marketing"
     },
@@ -311,7 +311,7 @@
       "domain": "digitalmarketing-conference.com",
       "url": "https://digitalmarketing-conference.com",
       "ai": 72,
-      "ai_prompts": 109,
+      "ai_prompts": 108,
       "brand": "DMWF"
     },
     {
@@ -378,8 +378,8 @@
       "cat": "SEO",
       "domain": "womenintechseo.com",
       "url": "https://womenintechseo.com",
-      "ai": 34,
-      "ai_prompts": 8,
+      "ai": 32,
+      "ai_prompts": 7,
       "brand": "WTSFest"
     },
     {
@@ -412,7 +412,7 @@
       "cat": "SEO",
       "domain": "smxexpo.com",
       "url": "https://smxexpo.com",
-      "ai": 34,
+      "ai": 33,
       "ai_prompts": 8,
       "brand": "SMX Munich"
     },
@@ -498,7 +498,7 @@
       "domain": "socialmediaexaminer.com",
       "url": "https://socialmediaexaminer.com",
       "ai": 64,
-      "ai_prompts": 65,
+      "ai_prompts": 64,
       "brand": "Social Media Marketing World"
     },
     {
